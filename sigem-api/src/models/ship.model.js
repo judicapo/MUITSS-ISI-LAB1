@@ -5,7 +5,7 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const mothership = sequelizeClient.define('mothership', {
+  const ship = sequelizeClient.define('ship', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -14,22 +14,25 @@ module.exports = function (app) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    maxMarciansCount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
   }, {
-      hooks: {
-        beforeCount(options) {
-          options.raw = true;
-        }
+    hooks: {
+      beforeCount(options) {
+        options.raw = true;
       }
-    });
+    }
+  });
 
   // eslint-disable-next-line no-unused-vars
-  mothership.associate = function (models) {
+  ship.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    mothership.hasMany(models.ship, { foreignKey: { allowNull: false, name: 'origin_mothership' } });
-    mothership.hasMany(models.ship, { foreignKey: { allowNull: false, name: 'destiny_mothership' } });
   };
 
-  return mothership;
+  return ship;
 };
