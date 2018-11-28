@@ -5,21 +5,17 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const ship = sequelizeClient.define('ship', {
+  const trip = sequelizeClient.define('trip', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    maxMarciansCount: {
-      type: DataTypes.INTEGER,
+    onBoard: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 0
-    },
+      defaultValue: true
+    }
   }, {
     hooks: {
       beforeCount(options) {
@@ -29,11 +25,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  ship.associate = function (models) {
+  trip.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    ship.hasMany(models.trip, { foreignKey: { allowNull: false } });
   };
 
-  return ship;
+  return trip;
 };
