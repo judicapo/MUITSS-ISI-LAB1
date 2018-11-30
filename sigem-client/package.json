@@ -10,6 +10,7 @@
   "dependencies": {
     "@feathersjs/feathers": "^3.2.3",
     "@feathersjs/socketio-client": "^1.1.5",
+    "buefy": "^0.7.1",
     "feathers-vuex": "^1.6.2",
     "socket.io-client": "^2.2.0",
     "vue": "^2.5.17",
