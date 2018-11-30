@@ -1,46 +1,50 @@
 <template>
-  <div class="">
-    <form action="" @submit.prevent="save">
-      <div class="material-card-content">
-        <p class="title">Create a new ship</p>
-        <section class="modal-card-body">
-          <b-field label="ship name">
-            <b-input
-                name="name"
-                v-model="shipName"
-                type="name">
-            </b-input>
-          </b-field>
-          <span class="error" v-show="errors['shipName']">{{ errors["shipName"] }}</span>
-          <b-field label="Ship max capacity">
-            <b-input
-                name="maxCapacity"
-                v-model="maxCapacity"
-                type="number">
-            </b-input>
-          </b-field>
-          <span class="error" v-show="errors['maxCapacity']">{{ errors["maxCapacity"] }}</span>
-          <b-field label="Ship morigin">
-            <b-select placeholder="Select" v-model="originMothership" expanded>
-              <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
-            </b-select>
-          </b-field>
-          <span class="error" v-show="errors['originMothership']">{{ errors["originMothership"] }}</span>
-          <b-field label="Ship destiny">
-            <b-select placeholder="Select" v-model="destinyMothership" expanded>
-              <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
-            </b-select>
-          </b-field>
-          <span class="error" v-show="errors['destinyMothership']">{{ errors["destinyMothership"] }}</span>
-        </section>
-      </div>
-      <div class="content has-text-centered">
-        <p>
-          <button class="button is-primary">
-            Create
-          </button>
-        </p>
-      </div>
+  <div class="columns">
+    <div class="column">
+      <form action="" @submit.prevent="save">
+        <div class="material-card-content">
+          <p class="title">Create a new ship</p>
+          <section class="modal-card-body">
+            <b-field label="ship name">
+              <b-input
+                  name="name"
+                  v-model="shipName"
+                  type="name">
+              </b-input>
+            </b-field>
+            <span class="error" v-show="errors['shipName']">{{ errors["shipName"] }}</span>
+            <b-field label="Ship max capacity">
+              <b-input
+                  name="maxCapacity"
+                  v-model="maxCapacity"
+                  type="number">
+              </b-input>
+            </b-field>
+            <span class="error" v-show="errors['maxCapacity']">{{ errors["maxCapacity"] }}</span>
+            <b-field label="Ship morigin">
+              <b-select placeholder="Select" v-model="originMothership" expanded>
+                <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
+              </b-select>
+            </b-field>
+            <span class="error" v-show="errors['originMothership']">{{ errors["originMothership"] }}</span>
+            <b-field label="Ship destiny">
+              <b-select placeholder="Select" v-model="destinyMothership" expanded>
+                <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
+              </b-select>
+            </b-field>
+            <span class="error" v-show="errors['destinyMothership']">{{ errors["destinyMothership"] }}</span>
+          </section>
+        </div>
+        <div class="content has-text-centered">
+          <p>
+            <button class="button is-primary">
+              Create
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="column">
       <div class="content has-text-centered">
         <p>
           <template>
@@ -48,7 +52,7 @@
           </template>
         </p>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 

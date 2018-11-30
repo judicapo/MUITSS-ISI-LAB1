@@ -1,16 +1,14 @@
 <template>
-  <div class="home">
-    <div class="columns">
-      <div class="column">
+  <div>
+    <div class="card">
+      <div class="card-content">
         <mothership />
       </div>
-      <div class="column">
+    </div>
+    <div class="card">
+      <div class="card-content">
         <ship />
       </div>
-      <div class="column">
-      </div>
-    </div>
-    <div>
     </div>
   </div>
 </template>
