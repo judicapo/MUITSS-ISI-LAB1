@@ -70,9 +70,9 @@ export default {
   },
   methods: {
     ...mapActions('trip', { createTrip: 'create' }),
-    ...mapActions('trip', { patchTrip: 'patch' }),
     ...mapActions('passenger', { findPassenger: 'find' }),
     ...mapActions('ship', { findShip: 'find' }),
+    ...mapActions('ship', { patchShip: 'patch' }),
     ...mapActions('trip', { findTrip: 'find' }),
     save() {
       if (this.validateForm()) {
@@ -82,10 +82,25 @@ export default {
           this.errors['passenger'] = 'there is a trip started for the provided data'
           return
         }
+        const targetShip = this.ships.find(s => s.id === this.ship)
+        if (targetShip.maxMarciansCount < 1) {
+          this.errors = {}
+          this.errors['passenger'] = `Ship ${targetShip.name} is full`
+          return
+        }
         this.createTrip({
           shipId: this.ship,
           passengerId: this.passenger
-        }).then(() => {
+        }).then((data) => {
+          this.patchShip([targetShip.id, {
+            maxMarciansCount: (targetShip.maxMarciansCount - 1)
+          }]).catch(err => {
+            this.patchTrip([data.id, {
+              onBoard: true
+            }])
+            this.errors = {}
+            this.errors['updatePassenger'] = err
+          })
         }).catch(err => {
           this.errors = {}
           this.errors['passenger'] = err

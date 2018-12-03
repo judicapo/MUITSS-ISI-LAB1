@@ -69,14 +69,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions('trip', { createTrip: 'create' }),
     ...mapActions('trip', { patchTrip: 'patch' }),
     ...mapActions('passenger', { findPassenger: 'find' }),
     ...mapActions('ship', { findShip: 'find' }),
+    ...mapActions('ship', { patchShip: 'patch' }),
     ...mapActions('trip', { findTrip: 'find' }),
     update() {
       if (this.validateUpdateForm()) {
-        const trip = this.trips.find(x => x.shipId == this.updateShip && x.passengerId === this.updatePassenger && x.onBoard)
+        const ship = this.ships.find(x => x.id === this.updateShip)
+        const trip = this.trips.find(x => x.shipId === ship.id && x.passengerId === this.updatePassenger && x.onBoard)
         if (!trip) {
           this.errors = {}
           this.errors['updatePassenger'] = 'there is no trip started for the provided data'
@@ -85,6 +86,15 @@ export default {
         this.patchTrip([trip.id, {
           onBoard: false
         }]).then(() => {
+          this.patchShip([ship.id, {
+            maxMarciansCount: (ship.maxMarciansCount + 1)
+          }]).catch(err => {
+            this.patchTrip([trip.id, {
+              onBoard: true
+            }])
+            this.errors = {}
+            this.errors['updatePassenger'] = err
+          })
         }).catch(err => {
           this.errors = {}
           this.errors['updatePassenger'] = err

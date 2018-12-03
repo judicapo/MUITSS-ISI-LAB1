@@ -22,6 +22,7 @@ export default new Vuex.Store({
     service('mothership'),
     service('ship'),
     service('passenger'),
-    service('trip')
+    service('trip'),
+    service('trip-review')
   ]
 })

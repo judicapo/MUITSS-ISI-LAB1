@@ -13,6 +13,9 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'tripList',
+  props: {
+    query: Object
+  },
   computed: {
     ...mapGetters('trip', { findTripInStore: 'find' }),
     ...mapGetters('passenger', { findPassengerInStore: 'find' }),
@@ -50,6 +53,14 @@ export default {
           let passenger = this.passengers.find(p => p.id === x.passengerId)
           if (passenger) x = Object.assign(x, { passengerName: passenger.name })
         })
+      }
+      if (this.query) {
+        let querykeys = Object.keys(this.query)
+        if (querykeys.length > 0){
+          trips.data = trips.data.filter(t =>
+              querykeys.every(q => t[q] === this.query[q])
+          )
+        }
       }
       return trips && trips.data ? trips.data : []
     }

@@ -129,7 +129,7 @@ export default {
           destiny_mothership: this.destinyMothership
         }).then(() => {
           this.shipName = ''
-          this.maxMarciansCount = ''
+          this.maxCapacity = ''
         }).catch(err => {
           this.errors = {}
           this.errors['shipName'] = err
