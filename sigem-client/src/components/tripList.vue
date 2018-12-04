@@ -35,12 +35,10 @@ export default {
         }
       })
       return ships && ships.data ? ships.data : []
-    },    
+    },
     trips () {
       const trips = this.findTripInStore({
-        query: {
-          $sort: {createdAt: -1}
-        }
+        query: this.query
       })
       if (this.ships){
         trips.data.map(x => {
@@ -53,14 +51,6 @@ export default {
           let passenger = this.passengers.find(p => p.id === x.passengerId)
           if (passenger) x = Object.assign(x, { passengerName: passenger.name })
         })
-      }
-      if (this.query) {
-        let querykeys = Object.keys(this.query)
-        if (querykeys.length > 0){
-          trips.data = trips.data.filter(t =>
-              querykeys.every(q => t[q] === this.query[q])
-          )
-        }
       }
       return trips && trips.data ? trips.data : []
     }
@@ -92,10 +82,13 @@ export default {
     ...mapActions('passenger', { findPassenger: 'find' }),
     ...mapActions('ship', { findShips: 'find' })
   },
-  created() {
+  mounted() {
+    console.log(this.query)
     this.findShips().catch(error => console.log(error))
     this.findPassenger().catch(error => console.log(error))
-    this.findTrips().catch(error => console.log(error))
+    this.findTrips({
+      query: this.query
+    }).catch(error => console.log(error))
   }
 }
 </script>
