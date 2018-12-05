@@ -3,7 +3,7 @@
   "description": "",
   "version": "0.0.0",
   "homepage": "",
-  "main": "./src/index.js",
+  "main": "./index.js",
   "keywords": [
     "feathers"
   ],
@@ -23,9 +23,9 @@
   },
   "scripts": {
     "test": "npm run eslint && NODE_ENV= npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "dev": "nodemon src/",
-    "start": "node src/",
+    "eslint": "eslint index.js. test/. --config .eslintrc.json",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "mocha": "mocha test/ --recursive --exit"
   },
   "noAnalyze": true,
