@@ -6,33 +6,31 @@
           <div class="column">
             <form action="" @submit.prevent="save">
               <div class="material-card-content">
-                <p class="title">Start a review</p>
-                <section class="modal-card-body">
-                  <b-field label="User name">
-                    <b-input
-                        name="name"
-                        v-model="username"
-                        type="name">
-                    </b-input>
-                  </b-field>
-                  <span class="error" v-show="errors['username']">{{ errors["username"] }}  </span>
-                  <b-field label="Ship to review">
-                    <b-select placeholder="Select" v-model="ship" expanded>
-                      <option v-for="item in ships" :key="item.id" :value="item.id"> {{ item.name }}</option>
-                    </b-select>
-                  </b-field>
-                  <span class="error" v-show="errors['ship']">{{ errors["ship"] }}</span>
-                  <b-field label="Select a date">
-                    <b-datepicker v-model="date" :date-formatter="(date) => date.toUTCString()">
-                    </b-datepicker>
-                  </b-field>
-                  <span class="error" v-show="errors['date']">{{ errors["date"] }}</span>
-                </section>
+                <p class="title">Make a review</p>
+                <b-field label="Type your name">
+                  <b-input
+                      name="name"
+                      v-model="username"
+                      type="name">
+                  </b-input>
+                </b-field>
+                <span class="error" v-show="errors['username']">{{ errors["username"] }}  </span>
+                <b-field label="Select ship to review">
+                  <b-select placeholder="Select" v-model="ship" expanded>
+                    <option v-for="item in ships" :key="item.id" :value="item.id"> {{ item.name }}</option>
+                  </b-select>
+                </b-field>
+                <span class="error" v-show="errors['ship']">{{ errors["ship"] }}</span>
+                <b-field label="Pick a date">
+                  <b-datepicker v-model="date" :date-formatter="(date) => date.toUTCString()" position="is-top-right">
+                  </b-datepicker>
+                </b-field>
+                <span class="error" v-show="errors['date']">{{ errors["date"] }}</span>
               </div>
               <div class="content has-text-centered">
                 <p>
                   <button class="button is-primary">
-                    Show
+                    Show tip information
                   </button>
                 </p>
               </div>

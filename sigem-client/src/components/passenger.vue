@@ -5,7 +5,7 @@
         <div class="material-card-content">
           <p class="title">Create a new passenger</p>
           <section class="modal-card-body">
-            <b-field label="Marcian name">
+            <b-field label="Type the marcian name">
               <b-input
                   name="name"
                   v-model="passengerName"
@@ -18,7 +18,7 @@
         <div class="content has-text-centered">
           <p>
             <button class="button is-primary">
-              Create
+              Register passenger
             </button>
           </p>
         </div>

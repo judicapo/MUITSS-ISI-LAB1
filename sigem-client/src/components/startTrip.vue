@@ -3,13 +3,13 @@
     <div class="material-card-content">
       <p class="title">Create a new trip</p>
       <section class="modal-card-body">
-        <b-field label="Ship to travel">
+        <b-field label="Select a ship">
           <b-select placeholder="Select" v-model="ship" expanded>
             <option v-for="item in ships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
           </b-select>
         </b-field>
         <span class="error" v-show="errors['ship']">{{ errors["ship"] }}</span>
-        <b-field label="Marcian to travel">
+        <b-field label="Select a marcian">
           <b-select placeholder="Select" v-model="passenger" expanded>
             <option v-for="item in passengers" :key="item.id" :value="item.id"> {{ item.name  }}</option>
           </b-select>
@@ -20,7 +20,7 @@
     <div class="content has-text-centered">
       <p>
         <button class="button is-primary">
-          Start trip
+          Get onboard
         </button>
       </p>
     </div>

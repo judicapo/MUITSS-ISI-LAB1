@@ -5,7 +5,7 @@
         <div class="material-card-content">
           <p class="title">Create a new mothership</p>
           <section class="modal-card-body">
-            <b-field label="Mothership name">
+            <b-field label="Type the mothership name">
               <b-input
                   name="name"
                   v-model="mothershipName"
@@ -18,7 +18,7 @@
         <div class="content has-text-centered">
           <p>
             <button class="button is-primary">
-              Create
+              Create 
             </button>
           </p>
         </div>
@@ -63,7 +63,7 @@ export default {
         },
         {
             field: 'name',
-            label: 'Ship name',
+            label: 'Mothership name',
         }
       ]
     }

@@ -5,7 +5,7 @@
         <div class="material-card-content">
           <p class="title">Create a new ship</p>
           <section class="modal-card-body">
-            <b-field label="ship name">
+            <b-field label="Type the ship name">
               <b-input
                   name="name"
                   v-model="shipName"
@@ -13,7 +13,7 @@
               </b-input>
             </b-field>
             <span class="error" v-show="errors['shipName']">{{ errors["shipName"] }}</span>
-            <b-field label="Ship max capacity">
+            <b-field label="Set the ship max capacity">
               <b-input
                   name="maxCapacity"
                   v-model="maxCapacity"
@@ -21,13 +21,13 @@
               </b-input>
             </b-field>
             <span class="error" v-show="errors['maxCapacity']">{{ errors["maxCapacity"] }}</span>
-            <b-field label="Ship morigin">
+            <b-field label="Select the origin mothership">
               <b-select placeholder="Select" v-model="originMothership" expanded>
                 <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
               </b-select>
             </b-field>
             <span class="error" v-show="errors['originMothership']">{{ errors["originMothership"] }}</span>
-            <b-field label="Ship destiny">
+            <b-field label="Select the destiny mothership">
               <b-select placeholder="Select" v-model="destinyMothership" expanded>
                 <option v-for="item in motherships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
               </b-select>
@@ -38,7 +38,7 @@
         <div class="content has-text-centered">
           <p>
             <button class="button is-primary">
-              Create
+              Create new route
             </button>
           </p>
         </div>
@@ -107,11 +107,11 @@ export default {
         },
         {
             field: 'origin',
-            label: 'Origin name',
+            label: 'Origin mothership',
         },
         {
             field: 'destiny',
-            label: 'Destiny name',
+            label: 'Destiny mothership',
         }
       ]
     }
@@ -143,7 +143,7 @@ export default {
         this.errors['shipName'] = 'ship name is required'
       }
       if (!this.maxCapacity) {
-        this.errors['maxCapacity'] = 'max Capacity is required'
+        this.errors['maxCapacity'] = 'max capacity is required'
       }
       return Object.keys(this.errors).length === 0
     }

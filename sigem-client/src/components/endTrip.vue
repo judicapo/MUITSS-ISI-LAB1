@@ -3,13 +3,13 @@
     <div class="material-card-content">
       <p class="title">End a trip</p>
       <section class="modal-card-body">
-        <b-field label="Ship to end trip">
+        <b-field label="Select a trip">
           <b-select placeholder="Select" v-model="updateShip" expanded>
             <option v-for="item in ships" :key="item.id" :value="item.id"> {{ item.name  }}</option>
           </b-select>
         </b-field>
         <span class="error" v-show="errors['updateShip']">{{ errors["updateShip"] }}</span>
-        <b-field label="Marcian to end trip">
+        <b-field label="Select passenger">
           <b-select placeholder="Select" v-model="updatePassenger" expanded>
             <option v-for="item in passengers" :key="item.id" :value="item.id"> {{ item.name  }}</option>
           </b-select>
@@ -104,10 +104,10 @@ export default {
     validateUpdateForm() {
       this.errors = {}
       if (!this.updateShip) {
-        this.errors['updateShip'] = 'updateShip is required'
+        this.errors['updateShip'] = 'ship is required'
       }
       if (!this.updatePassenger) {
-        this.errors['updatePassenger'] = 'updatePassenger is required'
+        this.errors['updatePassenger'] = 'passenger is required'
       }
       return Object.keys(this.errors).length === 0
     }

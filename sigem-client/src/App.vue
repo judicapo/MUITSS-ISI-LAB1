@@ -26,4 +26,7 @@
   font-weight: bold;
 }
 
+.error {
+  color: red
+}
 </style>
