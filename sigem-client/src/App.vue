@@ -5,8 +5,13 @@
         <a class="navbar-item" href="#">
           <router-link to="/"><i class="fab fa-galactic-senate fa-2x"> Sigem</i></router-link> 
         </a>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSigem">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div class="navbar-menu">
+      <div id="navbarSigem" class="navbar-menu">
         <div class="navbar-end">
           <a class="navbar-item">
             <router-link to="/"><i class="fas fa-rocket "> Home</i></router-link> 
