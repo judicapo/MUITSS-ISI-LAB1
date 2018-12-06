@@ -83,7 +83,6 @@ export default {
     ...mapActions('ship', { findShips: 'find' })
   },
   mounted() {
-    console.log(this.query)
     this.findShips().catch(error => console.log(error))
     this.findPassenger().catch(error => console.log(error))
     this.findTrips({

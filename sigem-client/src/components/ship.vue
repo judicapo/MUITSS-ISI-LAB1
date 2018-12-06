@@ -133,7 +133,6 @@ export default {
         }).catch(err => {
           this.errors = {}
           this.errors['shipName'] = err
-          this.errors['maxCapacity'] = err
         })
       }
     },
@@ -144,6 +143,12 @@ export default {
       }
       if (!this.maxCapacity) {
         this.errors['maxCapacity'] = 'max capacity is required'
+      }
+      if (!this.originMothership) {
+        this.errors['originMothership'] = 'ship is required'
+      }
+      if (!this.destinyMothership) {
+        this.errors['destinyMothership'] = 'ship is required'
       }
       return Object.keys(this.errors).length === 0
     }

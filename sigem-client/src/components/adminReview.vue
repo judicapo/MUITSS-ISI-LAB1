@@ -171,6 +171,25 @@ export default {
       if (!this.date) {
         this.errors['date'] = 'date is required'
       }
+      const getLatestDate = function (xs) {
+        if (xs && xs.length) {
+          return xs.reduce((m,v,i) => (v.updatedAt > m.updatedAt) && i ? v : m).updatedAt
+        }
+        return null
+      }
+      const lastReview = getLatestDate(this.reviews.filter(x => x.shipId === this.ship))
+      if (lastReview) {
+        const lastDate = new Date(lastReview.split('.')[0])
+        // const oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        // const diffDays = Math.round(Math.abs(((new Date).getTime() - lastDate.getTime())/(oneDay)));
+        // if (diffDays <= 1) {
+        //   this.errors['date'] = 'a review has been done today!'
+        // }
+        if (new Date().toLocaleDateString() === lastDate.toLocaleDateString()) {
+          this.errors['date'] = 'a review has been done today!'
+        }
+      }
+      
       return Object.keys(this.errors).length === 0
     },
     initializeQuery (q) {
