@@ -1,11 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/trip">Trips</router-link> |
-      <router-link to="/review">Review</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <router-link to="/"><i class="fab fa-galactic-senate fa-2x"> Sigem</i></router-link> 
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item">
+            <router-link to="/"><i class="fas fa-rocket "> Home</i></router-link> 
+          </a>
+          <a class="navbar-item">
+            <router-link to="/trip"><i class="fas fa-calendar-alt"> Trips</i></router-link>
+          </a>
+          <a class="navbar-item">
+            <router-link to="/review"><i class="fas fa-search"> Review</i></router-link>
+          </a>
+          <a class="navbar-item">
+            <router-link to="/about"><i class="fas fa-info"> About</i></router-link>
+          </a>
+        </div>
+      </div>
+    </nav>
     <router-view/>
   </div>
 </template>

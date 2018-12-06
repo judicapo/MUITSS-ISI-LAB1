@@ -82,6 +82,11 @@ export default {
     ...mapActions('passenger', { findPassenger: 'find' }),
     ...mapActions('ship', { findShips: 'find' })
   },
+  watch: {
+    query(e) {
+      this.query = e
+    }
+  },
   mounted() {
     this.findShips().catch(error => console.log(error))
     this.findPassenger().catch(error => console.log(error))
