@@ -112,6 +112,10 @@ export default {
         {
             field: 'destiny',
             label: 'Destiny mothership',
+        },
+        {
+            field: 'maxMarciansCount',
+            label: 'Current capacity',
         }
       ]
     }
