@@ -22,7 +22,7 @@
                 </b-field>
                 <span class="error" v-show="errors['ship']">{{ errors["ship"] }}</span>
                 <b-field label="Pick a date">
-                  <b-datepicker v-model="date" :date-formatter="(date) => date.toUTCString()" position="is-top-right">
+                  <b-datepicker v-model="date" :date-formatter="(date) => date.toUTCString()">
                   </b-datepicker>
                 </b-field>
                 <span class="error" v-show="errors['date']">{{ errors["date"] }}</span>
