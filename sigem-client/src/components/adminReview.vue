@@ -30,7 +30,7 @@
               <div class="content has-text-centered">
                 <p>
                   <button class="button is-primary">
-                    Show tip information
+                    Show trip information
                   </button>
                 </p>
               </div>
